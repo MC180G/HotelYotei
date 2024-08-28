@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Guest</title>
+</head>
+<body>
+    <h1>Add a New Guest</h1>
+    <form action="add_guest.php" method="POST">
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+        
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+        
+        <label for="personCount">Person Count:</label><br>
+        <input type="number" id="personCount" name="personCount" min="1" required><br><br>
+        
+        <label for="checkInDate">Check-In Date:</label><br>
+        <input type="date" id="checkInDate" name="checkInDate" required><br><br>
+        
+        <label for="checkOutDate">Check-Out Date:</label><br>
+        <input type="date" id="checkOutDate" name="checkOutDate" required><br><br>
+        
+        <input type="submit" value="Add Guest">
+    </form>
+</body>
+</html>
