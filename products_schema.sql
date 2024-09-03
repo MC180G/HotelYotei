@@ -1,6 +1,7 @@
-CREATE DATABASE products_db;
+CREATE DATABASE IF NOT EXISTS products_db;
 
 USE products_db;
+-- Or USE products_data.sql;
 
 CREATE TABLE packaged_food
 (
