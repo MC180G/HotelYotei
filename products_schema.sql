@@ -1,19 +1,22 @@
-CREATE DATABASE IF NOT EXISTS products_db;
-USE fb_db;
-
 -- ## FOOD & BEVERAGE TABLES ##
+
+CREATE DATABASE IF NOT EXISTS fb_db;
+USE fb_db;
 
 -- Room Service Table
 CREATE TABLE roomSvc (
   id INT AUTO_INCREMENT PRIMARY KEY,
   RoomID INT NOT NULL,
   GuestID INT NOT NULL,
-  StaffID INT NOT NULL, -- This would be the server. 
+  StaffID INT NOT NULL, -- This would be the server to the room.
   bgID INT DEFAULT NULL, -- Nullable if not linked to Bar & Grille order
+  productID DEFAULT NULL, -- Nullible if not linked to Packaged Foods
   FOREIGN KEY (RoomID) REFERENCES rooms(id), -- Reference to Room table
   FOREIGN KEY (GuestID) REFERENCES guests(id), -- Reference to Guest table
   FOREIGN KEY (StaffID) REFERENCES staff(id), -- Reference to Staff table
-  FOREIGN KEY (bgID) REFERENCES bar_grille(id) -- Nullable reference to Bar & Grille table
+  FOREIGN KEY (bgID) REFERENCES bar_grille(id), -- Nullable reference to Bar & Grille table
+  FOREIGN KEY (productID) REFERENCES product(id) -- Nullable reference to Packaged Foods table
+
 );
 
 -- Bar & Grille Table
@@ -21,7 +24,7 @@ CREATE TABLE bar_grille (
   id INT AUTO_INCREMENT PRIMARY KEY,
   RoomID INT DEFAULT NULL, -- Nullable if served at the restaurant
   GuestID INT NOT NULL,
-  StaffID INT NOT NULL, -- This would be the server.
+  StaffID INT NOT NULL, -- This would be the server from the kitchen. 
   dishID INT NOT NULL, -- The dish served
   roomSvcID INT DEFAULT NULL, -- Nullable if not linked to Room Service
   FOREIGN KEY (RoomID) REFERENCES rooms(id), -- Nullable reference for in-room service
