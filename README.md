@@ -26,5 +26,5 @@ Version 2 wil include:
    * Food Ingredients (Name, Type (Meat, Veg, Grain, Other), Amount)
    * Liquor Ingredients (Name, Type (Liquor or Mixer), Amount)
 
-![Yotei](https://github.com/user-attachments/assets/dc20075f-ea1d-4c7f-a631-85964fba03dd)
+![Yotei Schematic](https://github.com/user-attachments/assets/7d01a83b-d514-4b6c-9836-bc8b55508219)
 
