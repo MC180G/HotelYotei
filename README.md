@@ -95,3 +95,44 @@ This project is open-source and available for educational and non-commercial use
 
 ## Purpose
 This project was created to showcase my SQL proficiency and demonstrate advanced database design skills to prospective employers. Hotel Yotei serves as a comprehensive example of database structuring, relational modeling, and data handling within a hospitality context.
+
+## Queries:
+Here are some example queries that could be run against this database:
+
+1. **List all guests currently checked in:**
+   ```sql
+   SELECT * FROM Guests
+   WHERE CURDATE() BETWEEN CheckInDate AND CheckOutDate;
+   ```
+
+2. **List all products and the quantity sold:**
+   ```sql
+   SELECT P.ProductName, SUM(PP.Quantity) AS TotalSold
+   FROM Products P
+   JOIN ProductPurchases PP ON P.ProductID = PP.ProductID
+   GROUP BY P.ProductName;
+   ```
+
+3. **List services purchased by a specific guest:**
+   ```sql
+   SELECT S.ServiceName, SP.ServiceDate, SP.ServiceTime
+   FROM Services S
+   JOIN ServicePurchases SP ON S.ServiceID = SP.ServiceID
+   WHERE SP.GuestID = 1;
+   ```
+
+4. **List all meals and whether a guest accepted them:**
+   ```sql
+   SELECT G.FirstName, G.LastName, M.MealName, MC.ChoiceDate, MC.AcceptMeal
+   FROM Guests G
+   JOIN MealChoices MC ON G.GuestID = MC.GuestID
+   JOIN Meals M ON MC.MealID = M.MealID;
+   ```
+
+5. **Calculate the total value of dining vouchers given out:**
+   ```sql
+   SELECT SUM(DiningVoucher) AS TotalVouchers
+   FROM MealChoices
+   WHERE AcceptMeal = FALSE;
+   ```
+
