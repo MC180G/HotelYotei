@@ -101,8 +101,9 @@ Here are some example queries that could be run against this database:
 
 1. **List all guests currently checked in:**
    ```sql
-   SELECT * FROM Guests
-   WHERE CURDATE() BETWEEN CheckInDate AND CheckOutDate;
+   SELECT G.GuestName, B.Room FROM Guests G
+   JOIN Bookings B ON G.GuestID = B.GuestID
+   WHERE CURDATE() BETWEEN B.CheckInDate AND B.CheckOutDate;
    ```
 
 2. **List all products and the quantity sold:**
@@ -118,7 +119,8 @@ Here are some example queries that could be run against this database:
    SELECT S.ServiceName, SP.ServiceDate, SP.ServiceTime
    FROM Services S
    JOIN ServicePurchases SP ON S.ServiceID = SP.ServiceID
-   WHERE SP.GuestID = 1;
+   JOIN Guests G on G.GuestID = SP.GuestID
+   WHERE G.GuestName = 'John Smith';
    ```
 
 4. **List all meals and whether a guest accepted them:**
